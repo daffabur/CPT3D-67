@@ -6,3 +6,24 @@ venv/
 .env
 .env.*
 !.env.example
+
+# Local datasets and archives
+/full_24k/
+/full_24k_update.zip
+/Source_Code_Archive/
+
+# Python environments
+/cpt/
+*.log
+
+# Experimental outputs
+/results/
+*.bak
+
+# Local backups
+*.local-backup
+
+# Local datasets and archives
+/full_24k/
+/full_24k_update.zip
+/Source_Code_Archive/
