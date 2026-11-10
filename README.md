@@ -69,6 +69,73 @@ Zero observed unsafe STOP does not guarantee zero risk on future data.
 - `Research/`: Research evaluations.
 - `docs/`: Integration documentation.
 
+## Preprocessing for iOS Integration
+
+The frozen Core ML models require preprocessing before inference. The Python files below are reference implementations for reproducing the model inputs in Swift.
+
+### SchemaGAN V4.2 Flexible
+
+| Component | File |
+|---|---|
+| Core ML model | `SchemaGAN_V4_2/SchemaGAN_V4_2_Flexible.mlpackage` |
+| Normalization | `SchemaGAN_V4_2/normalization.json` |
+| Python preprocessing | `Source_Code/schemagan_v42/flexible_cpt_preprocessing.py` |
+| Reference evaluation | `Source_Code/schemagan_v42/test_flexible_cpt_v42_v4b.py` |
+
+Integration flow:
+
+1. Receive measured CPT profiles, XY coordinates, depths, and Ic values.
+2. Prepare the project grid and physical cell resolution.
+3. Build sparse observations, observation masks, and spatial input features using the Python reference.
+4. Apply the exported normalization and preserve the required tensor axis order.
+5. Run SchemaGAN Core ML inference.
+6. Convert the prediction back to physical Ic values and preserve measured CPT observations.
+
+The reconstruction grid and number of CPT observations may vary. Do not assume a fixed number of initial CPTs.
+
+### DQN V4.6-A
+
+| Component | File |
+|---|---|
+| Core ML model | `model_export/DQN_V4_6_A_iOS/DQN_V4_6_A.mlpackage` |
+| Model contract | `model_export/DQN_V4_6_A_iOS/DQN_V4_6_A_contract.json` |
+| Python feature builder | `Source_Code/dqn3d/v46/features.py` |
+| Parity reference | `model_export/DQN_V4_6_A_iOS/DQN_V4_6_A_parity.json` |
+
+Integration flow:
+
+1. Receive the reconstructed Ic volume, measured CPT mask, valid-volume mask, grid resolution, and candidate locations.
+2. Select legal XY candidates according to the exported contract.
+3. Calculate 18 candidate features and 11 global context features.
+4. Concatenate features in the exact 29-feature order defined in the JSON contract.
+5. Run DQN Core ML inference with input shape `[N,29]`.
+6. Select the legal candidate with the highest Q-value and convert it into an XY recommendation.
+
+The DQN Q-value is a candidate ranking score, not a geological confidence score or automatic stopping criterion.
+
+### Parallel Development
+
+| SchemaGAN Developer | DQN Developer |
+|---|---|
+| Implement CPT preprocessing | Implement the 29-feature builder |
+| Integrate SchemaGAN Core ML | Integrate DQN Core ML |
+| Produce physical Ic reconstruction | Consume reconstructed Ic and CPT state |
+| Verify observation preservation | Verify legal candidates and Q-value parity |
+
+The DQN developer can use mock reconstructed Ic volumes while SchemaGAN integration is in progress. Both developers must agree on the grid geometry, coordinate order, valid mask, measured CPT mask, Ic units, and volume axis order.
+
+### Validation Requirements
+
+- Compare Swift preprocessing outputs against Python reference outputs using identical inputs.
+- Verify normalization and tensor dimensions.
+- Verify XY/Z axis orientation and physical grid resolution.
+- Verify that measured CPT values are preserved.
+- Verify all 29 DQN features and recommendation ranking against the exported parity reference.
+- Do not substitute older V4.5 feature calculations for V4.6-A without checking equivalence.
+- The supplied Python references may require additional modules from the original research project; copying a single file does not guarantee standalone execution.
+
+See [iOS Integration Guide](docs/IOS_INTEGRATION.md) for the remaining integration details.
+
 ## iOS Integration
 
 See [iOS Integration Guide](docs/IOS_INTEGRATION.md) for model contracts, integration order, probability calculation, and parity testing.
