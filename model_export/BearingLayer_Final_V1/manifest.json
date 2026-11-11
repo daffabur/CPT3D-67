@@ -1,0 +1,28 @@
+{
+  "package": "BearingLayer_Final_V1",
+  "status": "Frozen Python prototype; Core ML export pending",
+  "qc_fs": "V3-D frozen",
+  "schemagan": "V4.2 frozen; separate model",
+  "dqn": "Frozen; separate model",
+  "bearing_algorithm": "V1 strict continuous threshold",
+  "volume_order": "Z,Y,X",
+  "depth_map_order": "Y,X",
+  "depth_unit": "m",
+  "qc_unit": "MPa",
+  "fs_unit": "kPa after model output conversion",
+  "field_validated": false,
+  "coreml_exported": false,
+  "ios_integrated": false,
+  "qc_fs_inference_adapter_verified": true,
+  "files_sha256": {
+    "QC_FS_V3_D.pt": "21eaa45f303b24437f74f0ffb99d668d369814de9ffef69ac6d73467cf3b7255",
+    "normalization.json": "ba4a9c260cb92d666c2ee4d04c85fa1ce8a3b33bd18160afe01b49275999bd40",
+    "qc_fs_preprocessing.py": "5cd30ec37ba5c2c911c82877fe70acbce6aeea3313f00a9eef3b715e79430496",
+    "qc_fs_inference.py": "3d9b5de3e55b0e56e326ec94c47b6a83e9245d00e12fd3bcd7fe3dbfb8db1e30",
+    "bearing_criteria.py": "d4f0bd81a40087b59af46491b9f8b3de96b808a9cbdbef701a4ea69193259c81",
+    "reliability_policy.json": "d818ac10798eea98342f3b4b32292776b951768563faab000ddaf272c28b3a0e",
+    "final_metrics.csv": "239a90dccaf9f8256332d3df711a880c6667da32d8a61bb6888e00c0b383d587",
+    "README.md": "754bca134fde179c506419845b799c0821bd0bfeecb80a8c22304542444cf947"
+  },
+  "preprocessing_parity_verified": true
+}

@@ -1,0 +1,27 @@
+{
+  "configuration": {
+    "schemagan": "V4.2 frozen",
+    "dqn": "frozen",
+    "qc_fs": "V3-D",
+    "bearing_method": "V1 strict continuous threshold",
+    "smoothing": false,
+    "single_gap": false,
+    "evaluation": "synthetic data only",
+    "field_validated": false
+  },
+  "display_policy": {
+    "candidate_found": "Potensi lapisan terdeteksi (eksperimental)",
+    "candidate_not_found": "Belum cukup data untuk menentukan lapisan",
+    "invalid_input": "Data CPT tidak valid atau belum lengkap",
+    "bearing_capacity": "Belum cukup data untuk menghitung kapasitas",
+    "automatic_stop": false
+  },
+  "limitations": [
+    "No field validation",
+    "Test data used in earlier development comparisons",
+    "Strict criteria have low detection recall",
+    "Depth MAE applies only to correctly detected locations",
+    "No calibrated per-location confidence or representative radius",
+    "Potential layer is not confirmed bearing stratum"
+  ]
+}
