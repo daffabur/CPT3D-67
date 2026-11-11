@@ -1,0 +1,18 @@
+{
+  "version": "QCFS_CoreML_V1",
+  "checkpoint_sha256": "21eaa45f303b24437f74f0ffb99d668d369814de9ffef69ac6d73467cf3b7255",
+  "input_shape": [
+    1,
+    9,
+    24,
+    24,
+    24
+  ],
+  "precision": "FLOAT32",
+  "deployment_target": "iOS17",
+  "parity_cases": 6,
+  "qc_max_difference": 1.7881393432617188e-06,
+  "fs_max_difference": 1.430511474609375e-06,
+  "parity_passed": true,
+  "field_validated": false
+}
