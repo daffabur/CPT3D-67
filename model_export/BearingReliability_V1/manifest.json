@@ -1,0 +1,13 @@
+{
+  "version": "BearingReliability_V1",
+  "status": "Experimental Python prototype",
+  "field_validated": false,
+  "coreml_exported": false,
+  "models_modified": false,
+  "files_sha256": {
+    "bearing_reliability_ui.py": "7f579222f62ffad4350f2b1826cb18bd3baf05f2344dc4b7de13d1bf31e55e3f",
+    "reliability_lookup.json": "92ce43839d4bb2cd7924f2cb5400b738601f890e001f4113f77af65a05c61208",
+    "holdout_evaluation.csv": "fd8ab3baceca11de0369ae6145350245e946e5a7317cbb77362805a4b1af1b1a",
+    "README.md": "d123947fb6b07ca536379ba110398769fa00c6cdfa68ccefe7b261ab6a90a53a"
+  }
+}
