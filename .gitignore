@@ -27,3 +27,6 @@ venv/
 /full_24k/
 /full_24k_update.zip
 /Source_Code_Archive/
+
+__pycache__/
+*.pyc
