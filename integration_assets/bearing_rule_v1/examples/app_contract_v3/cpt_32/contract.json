@@ -1,0 +1,229 @@
+{
+  "schema": "bearing_app_contract_v3",
+  "schema_version": 3,
+  "source_volume": "v4_train_00890.npz",
+  "source_scenario": "A_thin_variable",
+  "prediction_source": "QC-FS CNN V3",
+  "model_checkpoint_epoch": 7,
+  "cpt_count": 32,
+  "sampling_pattern": "distributed",
+  "grid": {
+    "shape_xyz": [
+      32,
+      32,
+      16
+    ],
+    "spacing_m": [
+      5.0,
+      5.0,
+      2.0
+    ],
+    "array_order": "X,Y,Z",
+    "memory_layout": "C-contiguous, Z fastest",
+    "voxel_origin": "grid cell boundary",
+    "depth_positive_down": true,
+    "depth_reference": "top of synthetic grid",
+    "flat_index_formula": "(x * ny + y) * nz + z"
+  },
+  "binary_files": {
+    "qc_xyz.f32": {
+      "dtype": "<f4",
+      "shape": [
+        32,
+        32,
+        16
+      ]
+    },
+    "fs_xyz.f32": {
+      "dtype": "<f4",
+      "shape": [
+        32,
+        32,
+        16
+      ]
+    },
+    "valid_xyz.u8": {
+      "dtype": "u1",
+      "shape": [
+        32,
+        32,
+        16
+      ]
+    },
+    "candidate_xyz.u8": {
+      "dtype": "u1",
+      "shape": [
+        32,
+        32,
+        16
+      ]
+    },
+    "component_xyz.i32": {
+      "dtype": "<i4",
+      "shape": [
+        32,
+        32,
+        16
+      ]
+    },
+    "nearest_cpt_xy.f32": {
+      "dtype": "<f4",
+      "shape": [
+        32,
+        32
+      ]
+    }
+  },
+  "cpt_sites_xy_index": [
+    [
+      9,
+      4
+    ],
+    [
+      31,
+      31
+    ],
+    [
+      0,
+      31
+    ],
+    [
+      31,
+      0
+    ],
+    [
+      15,
+      21
+    ],
+    [
+      29,
+      15
+    ],
+    [
+      0,
+      16
+    ],
+    [
+      21,
+      6
+    ],
+    [
+      20,
+      31
+    ],
+    [
+      10,
+      30
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      9,
+      14
+    ],
+    [
+      24,
+      23
+    ],
+    [
+      5,
+      23
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      17,
+      13
+    ],
+    [
+      16,
+      0
+    ],
+    [
+      29,
+      7
+    ],
+    [
+      31,
+      22
+    ],
+    [
+      24,
+      0
+    ],
+    [
+      22,
+      17
+    ],
+    [
+      15,
+      7
+    ],
+    [
+      15,
+      27
+    ],
+    [
+      24,
+      11
+    ],
+    [
+      0,
+      25
+    ],
+    [
+      7,
+      9
+    ],
+    [
+      25,
+      29
+    ],
+    [
+      5,
+      29
+    ],
+    [
+      10,
+      19
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      13
+    ],
+    [
+      5,
+      18
+    ]
+  ],
+  "default_criteria": {
+    "qc_min_mpa": 15.0,
+    "min_thickness_m": 2.0,
+    "min_lateral_fraction": 0.05,
+    "ic_filter_enabled": false
+  },
+  "depth_summary": {
+    "status": "CANDIDATE_DETECTED",
+    "shallowest_top_depth_m": 16.0,
+    "deepest_bottom_depth_m": 20.0,
+    "max_contiguous_thickness_m": 4.0,
+    "candidate_voxels": 69,
+    "component_count": 1,
+    "interval_count": 53
+  },
+  "warnings": [
+    "Screening candidate only.",
+    "Not a bearing-capacity estimate.",
+    "No candidate detected is not proof that no suitable stratum exists.",
+    "CPT distance is not calibrated uncertainty.",
+    "Ic rule is not validated."
+  ]
+}

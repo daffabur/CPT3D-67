@@ -1,0 +1,176 @@
+{
+  "package": "CPT3D-67 Bearing Rule Integration Assets",
+  "version": 1,
+  "frozen_models": [
+    "QC-FS CNN V3",
+    "SchemaGAN Ic V4.2"
+  ],
+  "bearing_algorithm": "Deterministic Rule Engine V1/V2",
+  "model_usage": "QC-FS reconstructs qc/fs; SchemaGAN reconstructs Ic independently.",
+  "ic_filter": "Experimental; not validated for bearing classification",
+  "validation": {
+    "rule_label_parity": "270/270",
+    "application_contract": "PASS",
+    "binary_roundtrip": "PASS",
+    "slider_recomputation": "PASS"
+  },
+  "limitations": [
+    "Not verified bearing capacity",
+    "Synthetic validation only for bearing candidates",
+    "No-candidate result does not prove absence",
+    "CPT distance is not calibrated uncertainty",
+    "CNN and Ic grid alignment requires validation"
+  ],
+  "files": [
+    {
+      "path": "results/qc_fs_joint_v3/spatial_cnn_v3/best.pt",
+      "sha256": "8a67c06704d1cb923a5e9249da506055dbef351bb0083b60eeee573b92c1d615",
+      "size_bytes": 532438
+    },
+    {
+      "path": "scripts/geotech/v4/train_spatial_cnn_v2.py",
+      "sha256": "c12c180b0d488cac37855543cecc68ccfdee8c60cd14defdc8a64ba965363299",
+      "size_bytes": 28899
+    },
+    {
+      "path": "scripts/geotech/v4/train_spatial_cnn_v3.py",
+      "sha256": "e1b39e888503b16a214c80c3e510f5e4c7a4f08e8054dfd7f3a749fbe5c0318e",
+      "size_bytes": 16172
+    },
+    {
+      "path": "model_export/SchemaGAN_V4_2/SchemaGAN_V4_2.pt",
+      "sha256": "f130358b9044821912f53d9085c12084aeed8b506e8096704d75b6f3d7b4ed85",
+      "size_bytes": 482042
+    },
+    {
+      "path": "scripts/synthetic_v4/train_sgan_v42.py",
+      "sha256": "c9b32f02983876b29bc961e84d7a8f7461d819fb21ae394008e911e82f9a7677",
+      "size_bytes": 14999
+    },
+    {
+      "path": "scripts/geotech/v4/bearing_rule_engine_v1.py",
+      "sha256": "cf13a38a7217ae3ad5d85630dd4f9229a99c7eaf8265d2648e5c4fcdc92f8081",
+      "size_bytes": 3863
+    },
+    {
+      "path": "scripts/geotech/v4/bearing_rule_engine_v2.py",
+      "sha256": "66a5e0e948d32544120c865ed90cc6758aa4fce6b78b96c76f69d3736d685952",
+      "size_bytes": 7322
+    },
+    {
+      "path": "scripts/geotech/v4/export_bearing_app_contract_v3.py",
+      "sha256": "c2f01f818fac861866fcaf2c2c123264a1bb52ee4c991d5cd203494809f66ab9",
+      "size_bytes": 10705
+    },
+    {
+      "path": "scripts/geotech/v4/validate_bearing_rule_engine_v1.py",
+      "sha256": "df4c36277089c23f470c4eeeec8e00fe51837c035dbb8f46aefb64dcea753765",
+      "size_bytes": 5920
+    },
+    {
+      "path": "scripts/geotech/v4/test_bearing_rule_engine_v2.py",
+      "sha256": "79195c01bc88068df730c0cabba542de089644af3a02a4489a8536170e48f38c",
+      "size_bytes": 6554
+    },
+    {
+      "path": "scripts/geotech/v4/verify_qc_preservation_v1.py",
+      "sha256": "e9ff70b2a7b498c1ff3bd09014b8ed15ec222609ce000136c531c198cd9713cf",
+      "size_bytes": 6027
+    },
+    {
+      "path": "scripts/geotech/v4/build_bearing_candidate_labels_v1.py",
+      "sha256": "fc83ce18c0250c6d384984dddc8cabe6a9baca3d994957e1a51d7a093127effb",
+      "size_bytes": 7235
+    },
+    {
+      "path": "scripts/geotech/v4/evaluate_bearing_rule_predicted_v1.py",
+      "sha256": "edf3abeb8f08d997a2567fa9088a909667e10bda130b58cb7be6d8f3544f3e5a",
+      "size_bytes": 8163
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_32/candidate_xyz.u8",
+      "sha256": "67574cff20ccdd1596c8c27455418ab0f5017e203a0460b5dbd55661b6543f59",
+      "size_bytes": 16384
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_32/component_xyz.i32",
+      "sha256": "adcca1eee03e7c0e80e17e949530d9ded6a8b7ce9643ad9bde8496ff64560ac0",
+      "size_bytes": 65536
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_32/contract.json",
+      "sha256": "b76f79bcf8fb9cd68d15c647701b39937cf18159e405c9245b5439dfa6d419da",
+      "size_bytes": 3017
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_32/fs_xyz.f32",
+      "sha256": "57a04de2670bc24783fea0ffe9f32fc1c7c358583ea307b10d625d15f4f9e1ae",
+      "size_bytes": 65536
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_32/intervals.csv",
+      "sha256": "93aa137936a3cb50311b4accc1f2487ad4c635d171ab012bce554c45c0bb646e",
+      "size_bytes": 2061
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_32/nearest_cpt_xy.f32",
+      "sha256": "03ad4bc81643dbbac8305d3d28f42364f88ac5d64f9c46c0dd752d72b1c914bd",
+      "size_bytes": 4096
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_32/qc_xyz.f32",
+      "sha256": "78fbbc8f15f9f4094870de9626d1bee31444be1559d4917924e37e4ca7677517",
+      "size_bytes": 65536
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_32/valid_xyz.u8",
+      "sha256": "111ce3c2a38d83a2e4706bde4abddd509d7f8248116c6832b06745bdc349e09f",
+      "size_bytes": 16384
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_8/candidate_xyz.u8",
+      "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+      "size_bytes": 16384
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_8/component_xyz.i32",
+      "sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "size_bytes": 65536
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_8/contract.json",
+      "sha256": "739d8398051028ed6e6ac9aee902ec966575a4e0cf2da669ff92f6102b8a3517",
+      "size_bytes": 2268
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_8/fs_xyz.f32",
+      "sha256": "591c923e1fd67098f4221db783a221feb46c3bd60e532cfcdf52b6cf2d5c224d",
+      "size_bytes": 65536
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_8/intervals.csv",
+      "sha256": "a3218caa16a110fe028bad1026ed56c41333a942faac06a9a1b16f30f1d94d79",
+      "size_bytes": 84
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_8/nearest_cpt_xy.f32",
+      "sha256": "296f986a9aa3b9b3450678b3e4e1e8887a5a0d14c4faf46192c8c1ca0fd802bf",
+      "size_bytes": 4096
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_8/qc_xyz.f32",
+      "sha256": "297041200ddfb7fa24ab14c0da1b0c36274199c2c7cba2552dd95e72cd891b87",
+      "size_bytes": 65536
+    },
+    {
+      "path": "examples/app_contract_v3/cpt_8/valid_xyz.u8",
+      "sha256": "111ce3c2a38d83a2e4706bde4abddd509d7f8248116c6832b06745bdc349e09f",
+      "size_bytes": 16384
+    },
+    {
+      "path": "model_export/SchemaGAN_V4_2/normalization.json",
+      "sha256": "1c7e72414d0140dde5f193be0066861194d2ff3b34c4a077b78897ff41417a93",
+      "size_bytes": 144
+    }
+  ]
+}
