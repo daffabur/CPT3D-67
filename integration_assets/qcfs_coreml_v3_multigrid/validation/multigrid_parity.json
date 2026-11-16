@@ -1,0 +1,221 @@
+{
+  "model": "QCFS_CNN_V3",
+  "input_order": "N,C,Z,Y,X",
+  "grid_shapes_xyz": [
+    [
+      24,
+      24,
+      12
+    ],
+    [
+      32,
+      32,
+      16
+    ],
+    [
+      40,
+      40,
+      24
+    ],
+    [
+      48,
+      32,
+      20
+    ]
+  ],
+  "cases": [
+    {
+      "grid_xyz": [
+        24,
+        24,
+        12
+      ],
+      "volume": "v4_train_03792.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 1,
+      "qc_max_error_mpa": 4.0407753640892e-06,
+      "fs_max_error": 7.547300855115235e-08,
+      "logits_max_error": 7.62939453125e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        24,
+        24,
+        12
+      ],
+      "volume": "v4_train_03792.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 8,
+      "qc_max_error_mpa": 7.919323504523845e-06,
+      "fs_max_error": 1.1098369206985481e-07,
+      "logits_max_error": 7.62939453125e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        24,
+        24,
+        12
+      ],
+      "volume": "v4_train_03792.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 32,
+      "qc_max_error_mpa": 5.98487438097095e-06,
+      "fs_max_error": 1.8346154678772209e-07,
+      "logits_max_error": 7.62939453125e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        32,
+        32,
+        16
+      ],
+      "volume": "v4_train_00890.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 1,
+      "qc_max_error_mpa": 4.085702359546417e-06,
+      "fs_max_error": 7.425736998911692e-08,
+      "logits_max_error": 3.337860107421875e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        32,
+        32,
+        16
+      ],
+      "volume": "v4_train_00890.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 8,
+      "qc_max_error_mpa": 1.1015575068995531e-05,
+      "fs_max_error": 1.229539887126485e-07,
+      "logits_max_error": 7.62939453125e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        32,
+        32,
+        16
+      ],
+      "volume": "v4_train_00890.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 32,
+      "qc_max_error_mpa": 1.3250283956267594e-05,
+      "fs_max_error": 1.9434833342657498e-07,
+      "logits_max_error": 6.198883056640625e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        40,
+        40,
+        24
+      ],
+      "volume": "v4_train_04414.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 1,
+      "qc_max_error_mpa": 4.5573654503527905e-06,
+      "fs_max_error": 9.021346260296159e-08,
+      "logits_max_error": 5.7220458984375e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        40,
+        40,
+        24
+      ],
+      "volume": "v4_train_04414.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 8,
+      "qc_max_error_mpa": 1.4712273006978194e-05,
+      "fs_max_error": 2.7153019127590383e-07,
+      "logits_max_error": 7.62939453125e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        40,
+        40,
+        24
+      ],
+      "volume": "v4_train_04414.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 32,
+      "qc_max_error_mpa": 2.2115432319225192e-05,
+      "fs_max_error": 2.1661709492803993e-07,
+      "logits_max_error": 9.5367431640625e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        48,
+        32,
+        20
+      ],
+      "volume": "v4_train_02141.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 1,
+      "qc_max_error_mpa": 5.195645588429443e-06,
+      "fs_max_error": 1.0639370436049678e-07,
+      "logits_max_error": 5.7220458984375e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        48,
+        32,
+        20
+      ],
+      "volume": "v4_train_02141.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 8,
+      "qc_max_error_mpa": 2.004541577349528e-05,
+      "fs_max_error": 2.2589733417177627e-07,
+      "logits_max_error": 5.7220458984375e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "grid_xyz": [
+        48,
+        32,
+        20
+      ],
+      "volume": "v4_train_02141.npz",
+      "scenario": "A_thin_variable",
+      "cpt_count": 32,
+      "qc_max_error_mpa": 2.6337916153806873e-05,
+      "fs_max_error": 3.446825360686745e-07,
+      "logits_max_error": 7.62939453125e-06,
+      "observed_qc_max_error": 0.0,
+      "observed_fs_max_error": 0.0,
+      "status": "PASS"
+    }
+  ],
+  "overall_status": "PASS"
+}

@@ -1,0 +1,102 @@
+{
+  "model": "QC-FS CNN V3",
+  "version": "multigrid_v1",
+  "checkpoint_epoch": 7,
+  "checkpoint_sha256": "8a67c06704d1cb923a5e9249da506055dbef351bb0083b60eeee573b92c1d615",
+  "input": {
+    "name": "input_volume",
+    "dtype": "float32",
+    "order": "N,C,Z,Y,X",
+    "channels": [
+      "log(idw_qc / 5.0)",
+      "log(idw_fs / 0.10)",
+      "observed_log_qc",
+      "observed_log_fs",
+      "observed_mask",
+      "normalized_nearest_cpt_distance",
+      "normalized_x",
+      "normalized_y",
+      "normalized_z"
+    ]
+  },
+  "supported_grid_shapes_xyz": [
+    [
+      24,
+      24,
+      12
+    ],
+    [
+      32,
+      32,
+      16
+    ],
+    [
+      40,
+      40,
+      24
+    ],
+    [
+      48,
+      32,
+      20
+    ]
+  ],
+  "outputs": [
+    "residual",
+    "logits"
+  ],
+  "postprocessing": "Reconstruct qc/fs from IDW and residual; preserve observed measurements explicitly.",
+  "validation": {
+    "multigrid_cases": 12,
+    "result": "PASS",
+    "runtime": "macOS Core ML CPU_ONLY"
+  },
+  "limitations": [
+    "Only four enumerated grid shapes validated",
+    "Swift preprocessing parity not yet validated",
+    "iOS device runtime not yet validated",
+    "No field-data bearing validation"
+  ],
+  "files": [
+    {
+      "path": "QCFS_CNN_V3.mlpackage/Manifest.json",
+      "sha256": "0559acbc72b856b360d10970c4cd807fdb40d214a4d94e7cf7b8a6405bee1fb7",
+      "bytes": 617
+    },
+    {
+      "path": "QCFS_CNN_V3.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+      "sha256": "57b295c1fde63421e831906791f30c4a2d01b1aec12da9c386e5d5b2bdd2b0b6",
+      "bytes": 62905
+    },
+    {
+      "path": "QCFS_CNN_V3.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+      "sha256": "14fbf994206d758412e92279385a5a0c3005160e230b1708cd51f7e11b0b7ac9",
+      "bytes": 524032
+    },
+    {
+      "path": "validation/parity_report.json",
+      "sha256": "ceaf3f9b9ca0cc7df915cf0288bac94e1d30dc93a5c099f6631f94c94a3725e0",
+      "bytes": 2379
+    },
+    {
+      "path": "validation/multigrid_parity.json",
+      "sha256": "5ecdafe0cfcb2311027a57e5500a02b520fdb8bde9b9e9180b7930ba5c6d7eec",
+      "bytes": 5224
+    },
+    {
+      "path": "scripts/export_qcfs_cnn_v3_coreml.py",
+      "sha256": "13428e45ab5f10cd1c1cf56d0ff953c85d820876883f7c5f9e157e9023972c57",
+      "bytes": 12626
+    },
+    {
+      "path": "scripts/export_qcfs_cnn_v3_multigrid.py",
+      "sha256": "882f9d3db9f43e6e5109c94f4795c3e11efbead36ec6f4f07c31b31ebe05d6d0",
+      "bytes": 12900
+    },
+    {
+      "path": "scripts/validate_qcfs_coreml_multigrid.py",
+      "sha256": "0977848b9b440b7dd96f6a754ce59eff5004911bea859dab6a9253656bae6958",
+      "bytes": 6782
+    }
+  ]
+}
