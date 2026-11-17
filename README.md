@@ -18,6 +18,9 @@ The application can begin with **1 CPT** and progressively incorporate additiona
 | Uncertainty V2 | Previous reconstruction error model | `Uncertainty_V2/` |
 | Uncertainty V3.1 | Updated iOS uncertainty export | `model_export/Uncertainty_V3_1_iOS/` |
 | Sufficiency Gate V2.1 | Probabilistic reconstruction sufficiency | `model_export/SufficiencyGate_V2_1/` |
+| QC-FS CNN V3 | 3D qc/fs reconstruction, frozen multigrid Core ML | `integration_assets/qcfs_coreml_v3_multigrid/` |
+| Bearing Rule V1/V2 | Deterministic candidate bearing-stratum detection | `integration_assets/bearing_rule_v1/` |
+| Bearing Reliability V1 | Earlier experimental reliability lookup | `model_export/BearingReliability_V1/` |
 
 ## Research Pipeline
 
@@ -139,6 +142,108 @@ See [iOS Integration Guide](docs/IOS_INTEGRATION.md) for the remaining integrati
 ## iOS Integration
 
 See [iOS Integration Guide](docs/IOS_INTEGRATION.md) for model contracts, integration order, probability calculation, and parity testing.
+
+## Bearing Layer Integration
+
+### Architecture
+
+The Bearing Layer research pipeline consists of:
+
+1. Import measured CPT profiles and spatial coordinates.
+2. Construct a shared physical grid.
+3. Reconstruct 3D qc/fs using frozen QC-FS CNN V3.
+4. Preserve measured CPT observations.
+5. Apply deterministic Bearing Rule Engine V1/V2.
+6. Export candidate masks, components, and depth intervals.
+7. Visualize candidate bearing strata in the iOS application.
+
+SchemaGAN V4.2 reconstructs Ic independently. Ic is not
+currently a validated Bearing Layer classification criterion.
+
+### Frozen QC-FS CNN V3
+
+- Checkpoint: `integration_assets/bearing_rule_v1/results/qc_fs_joint_v3/spatial_cnn_v3/best.pt`
+- Core ML: `integration_assets/qcfs_coreml_v3_multigrid/QCFS_CNN_V3.mlpackage`
+- Input: `[N,C,Z,Y,X]`, nine channels.
+- Outputs: residual corrections for qc/fs and auxiliary logits.
+- The preprocessing and postprocessing contracts must be
+  reproduced exactly in Swift.
+- Measured CPT observations must be preserved.
+
+Validated Core ML grid shapes (XYZ):
+
+- `24 x 24 x 12`
+- `32 x 32 x 16`
+- `40 x 40 x 24`
+- `48 x 32 x 20`
+
+Other grid shapes are not covered by this Core ML export's
+enumerated-shape validation.
+
+Core ML multigrid parity: 12/12 cases passed on macOS.
+This does not establish complete iOS device validation.
+
+### Bearing Rule Engine
+
+The deterministic rule engine identifies candidate regions
+using qc thresholds, minimum vertical thickness, lateral
+footprint filtering, and spatial connectivity.
+
+Reference criteria include:
+
+- Default qc threshold: 15 MPa.
+- Minimum vertical thickness: 2 m.
+- Minimum lateral footprint fraction: 0.05.
+- Connected candidate regions in 3D.
+
+Criteria are configurable. Changing threshold settings
+does not require retraining QC-FS CNN.
+
+Reference assets:
+`integration_assets/bearing_rule_v1/`
+
+Rule-label parity: 270/270 tests passed.
+
+### Bearing Layer Uncertainty
+
+Bearing Layer uncertainty and Ic reconstruction uncertainty
+are different prediction targets.
+
+- Uncertainty V3.1 concerns Ic reconstruction and sufficiency.
+- A validated estimator of Bearing Layer candidate/depth
+  uncertainty is not yet deployed.
+- Bearing-specific uncertainty experiments are ongoing.
+- Nearest-CPT distance is not a calibrated probability of error.
+- No-candidate predictions do not establish candidate absence.
+
+Do not use Ic uncertainty as a substitute for Bearing Layer
+depth uncertainty without separate validation.
+
+### Bearing Reliability and Legacy Assets
+
+The repository also contains earlier experimental packages:
+
+- `model_export/BearingLayer_Final_V1/`
+- `model_export/BearingReliability_V1/`
+- `model_export/BearingUIContract_V1/`
+- `model_export/QCFS_CoreML_V1/`
+
+These are versioned research or integration artifacts and
+must not be assumed interchangeable with the current frozen
+QC-FS CNN V3 multigrid and deterministic Bearing Rule pipeline.
+
+### Integration Status
+
+The Terravise iOS application integrates ML inference with
+SwiftUI, Core ML, and its existing visualization components.
+
+This research repository provides reference implementations,
+exported models, manifests, and validation assets. Actual
+Terravise UI behavior, on-device performance, and deployment
+status must be verified in the Terravise repository.
+
+Candidate bearing strata are preliminary indications, not
+validated bearing capacity or foundation design approval.
 
 ## Limitations
 
