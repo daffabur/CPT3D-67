@@ -253,3 +253,26 @@ validated bearing capacity or foundation design approval.
 - Model output does not replace geotechnical engineering judgment or SNI 8460:2017 requirements.
 - Automatic field investigation stopping is not approved.
 - Swift runtime parity and upstream training-data provenance still require verification.
+
+## Research Progress — November 2026
+
+### CPT Sufficiency & Optimization
+- Completed initial evaluation of DQN V4.6-A against farthest-point sampling.
+- Evaluated CPT sufficiency across different grid sizes and resolutions.
+- Identified cases where adding more CPT measurements provided limited reconstruction improvement.
+- Current focus: reducing unnecessary CPT recommendations, evaluating marginal information gain, and improving stopping criteria.
+- Status: **Ongoing research — automatic stopping is not yet validated.**
+
+### Bearing Layer Improvement
+- Integrated QCFS CNN V3 for 3D qc/fs reconstruction.
+- Completed initial QCFS V4 training and baseline comparison.
+- Integrated experimental Bearing Uncertainty V3 into Terravise.
+- Current focus: improving hidden high-qc detection at 10, 12, and 15 MPa, reducing missed candidate layers, and evaluating QCFS V4 against V3.
+- Status: **Ongoing research — further validation required.**
+
+### Latest Research Checkpoints
+- DQN V4.6-A: `results/dqn_v46a_experimental/training_5000/best.pt`
+- QCFS V4: `results/qc_fs_v4/combined_existing_v1/best.pt`
+- Bearing Uncertainty V3: `results/bearing_layer_v1/bearing_uncertainty_v3_step9b_model/candidate_estimator.joblib`
+
+All existing frozen baselines remain unchanged. New research improvements will be evaluated before integration into Terravise.
